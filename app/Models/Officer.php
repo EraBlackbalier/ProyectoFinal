@@ -41,4 +41,9 @@ class Officer extends Model
     {
         return $this->belongsTo(Contact::class, 'contact_id');
     }
+
+    public function licenses()
+    {
+        return $this->belongsToMany(License::class, 'license_officer');
+    }
 }

@@ -17,6 +17,11 @@ class Magazine extends Model
         'in_stock',
     ];
 
+    public function bullets()
+    {
+        return $this->hasMany(Bullet::class, 'magazine_id');
+    }
+
     public function model()
     {
         return $this->belongsTo(Model::class, 'model_id');

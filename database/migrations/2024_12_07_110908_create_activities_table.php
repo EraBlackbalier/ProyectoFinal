@@ -23,7 +23,6 @@ class CreateActivitiesTable extends Migration
             $table->text('reason'); // reason
             $table->timestamps(); // updated_at
 
-            // Foreign key constraints
             $table->foreign('officer_id')->references('id')->on('officers')->onDelete('cascade');
             $table->foreign('weapon_id')->references('id')->on('weapons')->onDelete('cascade');
             $table->foreign('magazine_id')->references('id')->on('magazines')->onDelete('cascade');

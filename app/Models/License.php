@@ -15,8 +15,8 @@ class License extends Model
         'name',
     ];
 
-    public function officer()
+    public function officers()
     {
-        return $this->belongsTo(Officer::class, 'officer_id');
+        return $this->belongsToMany(Officer::class, 'license_officer');
     }
 }

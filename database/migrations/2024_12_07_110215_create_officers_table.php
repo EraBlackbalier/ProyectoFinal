@@ -16,7 +16,6 @@ class CreateOfficersTable extends Migration
         Schema::create('officers', function (Blueprint $table) {
             $table->id(); // id (primary key)
             $table->string('name'); // name
-            $table->string('license_id'); // license_id
             $table->unsignedBigInteger('id_branch'); // id_branch (FK)
             $table->unsignedBigInteger('id_shift'); // id_shift (FK)
             $table->unsignedBigInteger('division_id'); // division_id (FK)

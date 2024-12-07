@@ -14,11 +14,15 @@ class CreateBulletsTable extends Migration
     public function up()
     {
         Schema::create('bullets', function (Blueprint $table) {
-            $table->id(); // id (primary key)
-            $table->integer('status'); // status
-            $table->string('caliber'); // caliber
-            $table->date('fired_date'); // fired_date
-            $table->timestamps(); // created_at and updated_at
+            $table->id();
+            $table->integer('status');
+            $table->string('caliber');
+            $table->date('fired_date');
+            $table->unsignedBigInteger('magazine_id');
+            $table->timestamps();
+
+
+            $table->foreign('magazine_id')->references('id')->on('magazines')->onDelete('cascade');
         });
     }
 

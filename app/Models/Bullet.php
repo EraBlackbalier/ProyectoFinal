@@ -9,10 +9,15 @@ class Bullet extends Model
 {
     use HasFactory;
 
-
     protected $fillable = [
         'status',
         'caliber',
         'fired_date',
+        'magazine_id',
     ];
+
+    public function magazine()
+    {
+        return $this->belongsTo(Magazine::class, 'magazine_id');
+    }
 }

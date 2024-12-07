@@ -13,4 +13,11 @@ class WeaponType extends Model
         'category',
         'description',
     ];
+
+    public static function validationRules(){
+        return[
+            'category'=>'string|max:250',
+            'address'=>'string|max:250'
+        ];
+    }
 }
