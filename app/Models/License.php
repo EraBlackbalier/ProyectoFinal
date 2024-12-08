@@ -11,12 +11,18 @@ class License extends Model
 
 
     protected $fillable = [
-        'officer_id',
         'name',
     ];
 
     public function officers()
     {
         return $this->belongsToMany(Officer::class, 'license_officer');
+    }
+
+    public static function validationRules()
+    {
+        return [
+            'name' => 'required|string|max:250',
+        ];
     }
 }

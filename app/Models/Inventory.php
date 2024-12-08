@@ -39,4 +39,14 @@ class Inventory extends Model
     {
         return $this->belongsTo(Officer::class, 'officer_id');
     }
+
+    public static function validationRules()
+    {
+        return [
+            'weapon_id' => 'required|exists:weapons,code', // Clave foránea con código de arma
+            'magazine_id' => 'nullable|exists:magazines,code', // Clave foránea opcional
+            'bullet_id' => 'nullable|exists:bullets,id', // Clave foránea opcional
+            'officer_id' => 'nullable|exists:officers,id', // Clave foránea opcional
+        ];
+    }
 }

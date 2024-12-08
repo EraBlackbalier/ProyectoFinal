@@ -19,15 +19,17 @@ class CreateOfficersTable extends Migration
             $table->unsignedBigInteger('id_branch'); // id_branch (FK)
             $table->unsignedBigInteger('id_shift'); // id_shift (FK)
             $table->unsignedBigInteger('division_id'); // division_id (FK)
-            $table->unsignedBigInteger('contact_id'); // contact_id (FK)
             $table->date('join_date'); // join_date
+            $table->string('email'); // email
+            $table->bigInteger('phone'); // phone
+            $table->string('curp')->unique(); // curp
+            $table->date('birthday'); // birthday
             $table->timestamps(); // created_at and updated_at
 
             // Foreign key constraints
             $table->foreign('id_branch')->references('id')->on('branches')->onDelete('cascade');
             $table->foreign('id_shift')->references('id')->on('shifts')->onDelete('cascade');
             $table->foreign('division_id')->references('id')->on('divisions')->onDelete('cascade');
-            $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
         });
     }
 

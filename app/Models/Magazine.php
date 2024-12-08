@@ -26,4 +26,15 @@ class Magazine extends Model
     {
         return $this->belongsTo(Model::class, 'model_id');
     }
+
+    public static function validationRules()
+    {
+        return [
+            'caliber' => 'required|string|max:50', // Calibre
+            'capacity' => 'required|integer|min:1', // Capacidad mínima 1
+            'model_id' => 'required|exists:models,id', // Relación con Model
+            'model_magazine' => 'nullable|string|max:250', // Modelo de revista
+            'in_stock' => 'required', // Si está en stock (0 o 1)
+        ];
+    }
 }

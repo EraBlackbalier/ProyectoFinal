@@ -13,70 +13,40 @@
             wire:click="$set('currentSlide', 1)"
             class="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-400 focus:outline-none transition mb-2"
         >
-            Activity
+            Branch
         </button>
         <button
             wire:click="$set('currentSlide', 2)"
             class="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-400 focus:outline-none transition mb-2"
         >
-            Branch
+            Division
         </button>
         <button
             wire:click="$set('currentSlide', 3)"
             class="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-400 focus:outline-none transition mb-2"
         >
-            Bullet
+            License
         </button>
         <button
             wire:click="$set('currentSlide', 4)"
             class="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-400 focus:outline-none transition mb-2"
         >
-            Contact
+            Magazine
         </button>
         <button
             wire:click="$set('currentSlide', 5)"
             class="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-400 focus:outline-none transition mb-2"
         >
-            Division
+            Model
         </button>
         <button
             wire:click="$set('currentSlide', 6)"
             class="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-400 focus:outline-none transition mb-2"
         >
-            Inventory
-        </button>
-        <button
-            wire:click="$set('currentSlide', 7)"
-            class="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-400 focus:outline-none transition mb-2"
-        >
-            License
-        </button>
-        <button
-            wire:click="$set('currentSlide', 8)"
-            class="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-400 focus:outline-none transition mb-2"
-        >
-            Magazine
-        </button>
-        <button
-            wire:click="$set('currentSlide', 9)"
-            class="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-400 focus:outline-none transition mb-2"
-        >
-            Model
-        </button>
-        <button
-            wire:click="$set('currentSlide', 10)"
-            class="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-400 focus:outline-none transition mb-2"
-        >
-            Officer
-        </button>
-        <button
-            wire:click="$set('currentSlide', 11)"
-            class="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-400 focus:outline-none transition mb-2"
-        >
             Shift
         </button>
         <button
-            wire:click="$set('currentSlide', 12)"
+            wire:click="$set('currentSlide', 7)"
             class="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-400 focus:outline-none transition mb-2"
         >
             WeaponType
@@ -90,39 +60,24 @@
                 <h2 class="text-3xl font-semibold text-gray-800">Weapon</h2>
                 @livewire('c-r-u-d-controller', ['modelName' => 'Weapon'])
             @elseif($currentSlide === 1)
-                <h2 class="text-3xl font-semibold text-gray-800">Activity</h2>
-                @livewire('c-r-u-d-controller', ['modelName' => 'Activity'])
-            @elseif($currentSlide === 2)
                 <h2 class="text-3xl font-semibold text-gray-800">Branch</h2>
                 @livewire('c-r-u-d-controller', ['modelName' => 'Branch'])
-            @elseif($currentSlide === 3)
-                <h2 class="text-3xl font-semibold text-gray-800">Bullet</h2>
-                @livewire('c-r-u-d-controller', ['modelName' => 'Bullet'])
-            @elseif($currentSlide === 4)
-                <h2 class="text-3xl font-semibold text-gray-800">Contact</h2>
-                @livewire('c-r-u-d-controller', ['modelName' => 'Contact'])
-            @elseif($currentSlide === 5)
+            @elseif($currentSlide === 2)
                 <h2 class="text-3xl font-semibold text-gray-800">Division</h2>
                 @livewire('c-r-u-d-controller', ['modelName' => 'Division'])
-            @elseif($currentSlide === 6)
-                <h2 class="text-3xl font-semibold text-gray-800">Inventory</h2>
-                @livewire('c-r-u-d-controller', ['modelName' => 'Inventory'])
-            @elseif($currentSlide === 7)
+            @elseif($currentSlide === 3)
                 <h2 class="text-3xl font-semibold text-gray-800">License</h2>
                 @livewire('c-r-u-d-controller', ['modelName' => 'License'])
-            @elseif($currentSlide === 8)
+            @elseif($currentSlide === 4)
                 <h2 class="text-3xl font-semibold text-gray-800">Magazine</h2>
                 @livewire('c-r-u-d-controller', ['modelName' => 'Magazine'])
-            @elseif($currentSlide === 9)
+            @elseif($currentSlide === 5)
                 <h2 class="text-3xl font-semibold text-gray-800">Model</h2>
                 @livewire('c-r-u-d-controller', ['modelName' => 'Model'])
-            @elseif($currentSlide === 10)
-                <h2 class="text-3xl font-semibold text-gray-800">Officer</h2>
-                @livewire('c-r-u-d-controller', ['modelName' => 'Officer'])
-            @elseif($currentSlide === 11)
+            @elseif($currentSlide === 6)
                 <h2 class="text-3xl font-semibold text-gray-800">Shift</h2>
                 @livewire('c-r-u-d-controller', ['modelName' => 'Shift'])
-            @elseif($currentSlide === 12)
+            @elseif($currentSlide === 7)
                 <h2 class="text-3xl font-semibold text-gray-800">WeaponType</h2>
                 @livewire('c-r-u-d-controller', ['modelName' => 'WeaponType'])
             @endif

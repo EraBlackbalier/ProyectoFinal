@@ -20,4 +20,14 @@ class Bullet extends Model
     {
         return $this->belongsTo(Magazine::class, 'magazine_id');
     }
+
+    public static function validationRules()
+    {
+        return [
+            'status' => 'required|string|max:50', // Estado del proyectil
+            'caliber' => 'required|string|max:50', // Calibre
+            'fired_date' => 'nullable|date', // Fecha opcional en formato válido
+            'magazine_id' => 'nullable|exists:magazines,id', // Clave foránea opcional
+        ];
+    }
 }

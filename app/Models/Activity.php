@@ -41,4 +41,16 @@ class Activity extends Model
     {
         return $this->belongsTo(Branch::class, 'branch_id');
     }
+
+    public static function validationRules()
+    {
+        return [
+            'officer_id' => 'required|exists:officers,id', // Relación con Officer
+            'weapon_id' => 'required|exists:weapons,code', // Relación con Weapon
+            'magazine_id' => 'nullable|exists:magazines,code', // Relación opcional con Magazine
+            'branch_id' => 'required|exists:branches,id', // Relación con Branch
+            'date' => 'required|date', // Fecha obligatoria
+            'reason' => 'nullable|string|max:1000', // Motivo opcional con límite de caracteres
+        ];
+    }
 }

@@ -11,4 +11,12 @@ class Shift extends Model
     protected $fillable = [
         'name'
     ];
+
+    public static function validationRules()
+    {
+        return [
+            'name' => 'required|string|max:250',
+        ];
+    }
+
 }
