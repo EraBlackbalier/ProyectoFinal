@@ -18,4 +18,12 @@ Route::middleware([
     Route::get('/officers', function () {
         return view('officers');
     })->name('officers');
+
+    Route::get('/activities', function () {
+        return view('activities');
+    })->name('activities');
+
+    Route::get('/bullet-tracker', function () {
+        return view('bullet');
+    })->name('bullet-tracker');
 });

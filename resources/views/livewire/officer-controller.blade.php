@@ -18,63 +18,65 @@
 
     <!-- Botón para abrir el modal de creación -->
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <button class="btn btn-primary btn-lg shadow rounded-pill" wire:click="set('modal',true)" data-bs-toggle="modal" data-bs-target="#officerModal">
-            Crear
+        <button class="btn btn-gradient-primary btn-lg shadow rounded-pill" wire:click="set('modal',true)" data-bs-toggle="modal" data-bs-target="#officerModal">
+            <i class="bi bi-plus-circle"></i> Crear Officer
         </button>
     </div>
 
     <!-- Tabla de Officers -->
-    <div class="table-responsive shadow rounded bg-white p-3">
-        <table class="table table-striped align-middle text-center">
-            <thead class="table-primary">
-                <tr>
-                    <th>#</th>
-                    <th>Nombre</th>
-                    <th>Sucursal</th>
-                    <th>Turno</th>
-                    <th>División</th>
-                    <th>Fecha de Ingreso</th>
-                    <th>Licencias</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse($officers as $officer)
+    <div class="table-responsive shadow rounded bg-white p-4">
+        <div class="table-responsive shadow-sm rounded bg-light p-4">
+            <table class="table table-hover align-middle text-center border border-1 rounded">
+                <thead class="table-primary text-uppercase text-secondary fw-bold small">
                     <tr>
-                        <td>{{ $officer->id }}</td>
-                        <td>{{ $officer->name }}</td>
-                        <td>{{ $officer->branch->name ?? 'Sin sucursal' }}</td>
-                        <td>{{ $officer->shift->name ?? 'Sin turno' }}</td>
-                        <td>{{ $officer->division->name ?? 'Sin división' }}</td>
-                        <td>{{ $officer->join_date }}</td>
-                        <td>
-                            @forelse($officer->licenses as $license)
-                                <span class="badge bg-success">{{ $license->name }}</span>
-                            @empty
-                                <span class="text-muted">Sin licencias</span>
-                            @endforelse
-                        </td>
-                        <td>
-                            <button class="btn btn-sm btn-info shadow-sm rounded-pill"  wire:click="edit({{ $officer->id }})" data-bs-toggle="modal" data-bs-target="#officerModal">
-                                Editar
-                            </button>
-                            <button class="btn btn-sm btn-danger shadow-sm rounded-pill" wire:click="delete({{ $officer->id }})">
-                                Eliminar
-                            </button>
-                        </td>
+                        <th class="py-3">#</th>
+                        <th class="py-3">Nombre</th>
+                        <th class="py-3">Sucursal</th>
+                        <th class="py-3">Turno</th>
+                        <th class="py-3">División</th>
+                        <th class="py-3">Fecha de Ingreso</th>
+                        <th class="py-3">Licencias</th>
+                        <th class="py-3">Acciones</th>
                     </tr>
-                @empty
-                    <tr>
-                        <td colspan="7" class="text-center text-muted fst-italic">No hay Officers disponibles</td>
-                    </tr>
-                @endforelse
-            </tbody>
-        </table>
+                </thead>
+                <tbody class="text-secondary">
+                    @forelse($officers as $officer)
+                        <tr class="bg-white border-bottom hover-highlight">
+                            <td class="py-2 fw-semibold">{{ $officer->id }}</td>
+                            <td class="py-2">{{ $officer->name }}</td>
+                            <td class="py-2">{{ $officer->branch->name ?? 'Sin sucursal' }}</td>
+                            <td class="py-2">{{ $officer->shift->name ?? 'Sin turno' }}</td>
+                            <td class="py-2">{{ $officer->division->name ?? 'Sin división' }}</td>
+                            <td class="py-2">{{ $officer->join_date }}</td>
+                            <td class="py-2">
+                                @forelse($officer->licenses as $license)
+                                    <span class="badge bg-gradient-success shadow-sm">{{ $license->name }}</span>
+                                @empty
+                                    <span class="text-muted fst-italic">Sin licencias</span>
+                                @endforelse
+                            </td>
+                            <td class="py-2">
+                                <button class="btn btn-sm btn-info shadow-sm rounded-pill" wire:click="edit({{ $officer->id }})" data-bs-toggle="modal" data-bs-target="#officerModal">
+                                    <i class="bi bi-pencil-square"></i> Editar
+                                </button>
+                                <button class="btn btn-sm btn-danger shadow-sm rounded-pill" wire:click="delete({{ $officer->id }})">
+                                    <i class="bi bi-trash"></i> Eliminar
+                                </button>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="8" class="text-center text-muted fst-italic py-4">No hay Officers disponibles</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <!-- Paginación -->
     <div class="d-flex justify-content-center mt-4">
-        {{ $officers->links() }}
+        {{ $officers->links('pagination::bootstrap-5') }}
     </div>
 
     @if($modal)
@@ -83,7 +85,7 @@
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content shadow-lg rounded">
                     <div class="modal-header bg-primary text-white">
-                        <h5 class="modal-title" id="officerModalLabel">
+                        <h5 class="modal-title fw-bold" id="officerModalLabel">
                             {{ $isEditMode ? 'Editar Officer' : 'Agregar Nuevo Officer' }}
                         </h5>
                         <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -163,7 +165,8 @@
                                                         value="{{ $license->id }}"
                                                         wire:model.defer="selectedLicenses"
                                                         id="license_{{ $license->id }}">
-                                                    <label class="form-check-label" for="license_{{ $license->id }}">
+                                                    <label class="form-check-label" for="license_{{
+                                                    $license->id }}">
                                                         {{ $license->name }}
                                                     </label>
                                                 </div>
@@ -173,7 +176,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary shadow-sm mt-3">{{ $isEditMode ? 'Actualizar' : 'Guardar' }}</button>
+                            <button type="submit" class="btn btn-gradient-primary shadow-sm mt-3">
+                                {{ $isEditMode ? 'Actualizar' : 'Guardar' }}
+                            </button>
                         </form>
                     </div>
                     <div class="modal-footer">

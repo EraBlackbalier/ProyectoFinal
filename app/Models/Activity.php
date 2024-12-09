@@ -27,13 +27,13 @@ class Activity extends Model
 
     public function weapon()
     {
-        return $this->belongsTo(Weapon::class, 'weapon_id', 'code');
+        return $this->belongsTo(Weapon::class, 'weapon_id', 'id');
     }
 
 
     public function magazine()
     {
-        return $this->belongsTo(Magazine::class, 'magazine_id', 'code');
+        return $this->belongsTo(Magazine::class, 'magazine_id', 'id');
     }
 
 
@@ -45,9 +45,9 @@ class Activity extends Model
     public static function validationRules()
     {
         return [
-            'officer_id' => 'required|exists:officers,id', // Relación con Officer
-            'weapon_id' => 'required|exists:weapons,code', // Relación con Weapon
-            'magazine_id' => 'nullable|exists:magazines,code', // Relación opcional con Magazine
+            'officer_id' => 'required|exists:officers,id',
+            'weapon_id' => 'required|exists:weapons,code',
+            'magazine_id' => 'nullable|exists:magazines,code',
             'branch_id' => 'required|exists:branches,id', // Relación con Branch
             'date' => 'required|date', // Fecha obligatoria
             'reason' => 'nullable|string|max:1000', // Motivo opcional con límite de caracteres

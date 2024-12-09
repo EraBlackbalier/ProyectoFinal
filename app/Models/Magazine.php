@@ -14,7 +14,7 @@ class Magazine extends Model
         'capacity',
         'model_id',
         'model_magazine',
-        'in_stock',
+        'status',
     ];
 
     public function bullets()
@@ -27,6 +27,12 @@ class Magazine extends Model
         return $this->belongsTo(Model::class, 'model_id');
     }
 
+    public function activities()
+    {
+        return $this->hasMany(Activity::class);
+    }
+
+
     public static function validationRules()
     {
         return [
@@ -34,7 +40,7 @@ class Magazine extends Model
             'capacity' => 'required|integer|min:1', // Capacidad mínima 1
             'model_id' => 'required|exists:models,id', // Relación con Model
             'model_magazine' => 'nullable|string|max:250', // Modelo de revista
-            'in_stock' => 'required', // Si está en stock (0 o 1)
+            'status' => 'required', // Si está en stock (0 o 1)
         ];
     }
 }

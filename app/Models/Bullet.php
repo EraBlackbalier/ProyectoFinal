@@ -16,6 +16,7 @@ class Bullet extends Model
         'magazine_id',
     ];
 
+
     public function magazine()
     {
         return $this->belongsTo(Magazine::class, 'magazine_id');
@@ -27,7 +28,7 @@ class Bullet extends Model
             'status' => 'required|string|max:50', // Estado del proyectil
             'caliber' => 'required|string|max:50', // Calibre
             'fired_date' => 'nullable|date', // Fecha opcional en formato válido
-            'magazine_id' => 'nullable|exists:magazines,id', // Clave foránea opcional
+            'magazine_id' => 'nullable|exists:magazines,id',
         ];
     }
 }

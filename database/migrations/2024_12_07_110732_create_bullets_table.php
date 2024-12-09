@@ -15,9 +15,9 @@ class CreateBulletsTable extends Migration
     {
         Schema::create('bullets', function (Blueprint $table) {
             $table->id();
-            $table->integer('status');
+            $table->string('status');
             $table->string('caliber');
-            $table->date('fired_date');
+            $table->date('fired_date')->nullable();
             $table->unsignedBigInteger('magazine_id');
             $table->timestamps();
 

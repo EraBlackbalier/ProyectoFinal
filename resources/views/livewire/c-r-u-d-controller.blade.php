@@ -98,6 +98,13 @@
                         @elseif ($field === 'location')
                             <!-- Campo de Texto para ubicación de Branch -->
                             <input type="text" wire:model.defer="data.{{ $field }}" id="{{ $field }}" class="form-control">
+                        @elseif ($field === 'status')
+                            <!-- Select para el campo status -->
+                            <select wire:model.defer="data.{{ $field }}" id="{{ $field }}" class="form-control">
+                                <option>Selecciona la disponibilidad</option>
+                                <option value="disponible" @if($value === 'disponible') selected @endif>Disponible</option>
+                                <option value="no disponible" @if($value === 'no disponible') selected @endif>No Disponible</option>
+                            </select>
                         @else
                             <!-- Campo Genérico -->
                             <input type="text" wire:model.defer="data.{{ $field }}" id="{{ $field }}" class="form-control">

@@ -19,7 +19,7 @@ class CreateMagazinesTable extends Migration
             $table->integer('capacity'); // capacity
             $table->unsignedBigInteger('model_id'); // model_id (FK)
             $table->string('model_magazine'); // model_magazine
-            $table->string('in_stock'); // in_stock
+            $table->string('status'); // in_stock
             $table->timestamps(); // updated_at
 
             // Foreign key constraint
