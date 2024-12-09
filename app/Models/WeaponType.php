@@ -17,7 +17,7 @@ class WeaponType extends Model
     public static function validationRules(){
         return[
             'category'=>'string|max:250',
-            'address'=>'string|max:250'
+            'description'=>'string|max:250'
         ];
     }
 }

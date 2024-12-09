@@ -1,5 +1,5 @@
 <div class="container mt-5">
-    <h2 class="mb-4 text-center text-primary fw-bold">Gestión de Officers</h2>
+    <h1 class="mb-4 text-center  text-primary fw-bold">Gestión de Officers</h1>
 
     <!-- Mensajes de sesión -->
     @if (session()->has('message'))
@@ -56,10 +56,10 @@
                                 @endforelse
                             </td>
                             <td class="py-2">
-                                <button class="btn btn-sm btn-info shadow-sm rounded-pill" wire:click="edit({{ $officer->id }})" data-bs-toggle="modal" data-bs-target="#officerModal">
+                                <button class="inline-flex items-center px-4 py-2 bg-green-800 dark:bg-green-500 border border-transparent rounded-md font-semibold text-xs text-white dark:text-white-800 uppercase tracking-widest hover:bg-green-700 dark:hover:bg-green-300 focus:bg-green-700 dark:focus:bg-white active:bg-green-900 dark:active:bg-green-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-green-800 disabled:opacity-50 transition ease-in-out duration-150" wire:click="edit({{ $officer->id }})" data-bs-toggle="modal" data-bs-target="#officerModal">
                                     <i class="bi bi-pencil-square"></i> Editar
                                 </button>
-                                <button class="btn btn-sm btn-danger shadow-sm rounded-pill" wire:click="delete({{ $officer->id }})">
+                                <button class="inline-flex items-center px-4 py-2 bg-red-800 dark:bg-green-500 border border-transparent rounded-md font-semibold text-xs text-white dark:text-white-800 uppercase tracking-widest hover:bg-red-700 dark:hover:bg-red-300 focus:bg-green-700 dark:focus:bg-white active:bg-green-900 dark:active:bg-green-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-green-800 disabled:opacity-50 transition ease-in-out duration-150" wire:click="delete({{ $officer->id }})">
                                     <i class="bi bi-trash"></i> Eliminar
                                 </button>
                             </td>
